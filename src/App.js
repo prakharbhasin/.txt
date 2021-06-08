@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import LoginIllus from "./Assets/login-illus1.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle, faFacebookF } from "@fortawesome/free-brands-svg-icons";
+// import { faGoogle } from "@fortawesome/free-solid-svg-icons";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className='login-section'>
+        <img src={LoginIllus} alt='Login!' className='login-illus' />
+      </div>
+      <div className='login-section'>
+        <h1 className='login heading'>Come. Connect.</h1>
+
+        <FontAwesomeIcon id='social-login-button' icon={faGoogle} />
+        <FontAwesomeIcon id='social-login-button' icon={faFacebookF} />
+      </div>
     </div>
   );
 }

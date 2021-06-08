@@ -1,5 +1,39 @@
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+
 .App {
   text-align: center;
+  background: var(--primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--accent);
+}
+
+.login-illus {
+  width: 80%;
+}
+
+.login-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+}
+
+#social-login-button {
+  font-size: 2rem;
+  padding: 2vh;
+  background: #231834;
+}
+
+.login.heading {
+  color: white;
+  font-size: 3rem;
 }
 
 .App-logo {
