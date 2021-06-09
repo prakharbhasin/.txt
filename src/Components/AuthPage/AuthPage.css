@@ -83,10 +83,23 @@
   cursor: pointer;
   border: 0;
   border-radius: 5px;
-  margin: 5% 0;
+  margin: 5% 0 2.5% 0;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.change-auth-text {
+  color: #999;
+  cursor: pointer;
+  margin-left: 40%;
+  font-weight: 500;
+}
+
+#change-auth-button {
+  font-size: 2rem;
+  margin-right: 50%;
+  cursor: pointer;
 }
