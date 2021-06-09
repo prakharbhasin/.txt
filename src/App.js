@@ -13,9 +13,20 @@ function App() {
       </div>
       <div className='login-section'>
         <h1 className='login heading'>Come. Connect.</h1>
-
-        <FontAwesomeIcon id='social-login-button' icon={faGoogle} />
-        <FontAwesomeIcon id='social-login-button' icon={faFacebookF} />
+        <p className='login subtext'>Interesting by-line goes here lol</p>
+        <div className='social-login-container'>
+          <button id='social-login-button'>
+            <FontAwesomeIcon id='social-icon' icon={faGoogle} />
+            Google
+          </button>
+          <button id='social-login-button'>
+            <FontAwesomeIcon id='social-icon' icon={faFacebookF} />
+            Facebook
+          </button>
+        </div>
+        <input className='login-input' type='text' placeholder='Email ID' />
+        <input className='login-input' type='password' placeholder='Password' />
+        <button className='login-button'>Log In</button>
       </div>
     </div>
   );
