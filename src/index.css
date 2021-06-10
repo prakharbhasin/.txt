@@ -13,6 +13,7 @@ code {
     monospace;
 }
 :root {
-  --primary: #151122;
+  --primary: #110f19;
+  --primary1: #151122;
   --accent: #4d38a2;
 }

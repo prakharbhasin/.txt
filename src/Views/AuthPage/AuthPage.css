@@ -1,0 +1,105 @@
+.login-container {
+  text-align: center;
+  background: var(--primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--accent);
+}
+
+.login-illus {
+  width: 100%;
+}
+
+.login-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  text-align: left;
+}
+
+.social-login-container {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.5% 0;
+}
+
+#social-login-button {
+  font-size: 1rem;
+  width: 47.5%;
+  height: 17.5vh;
+  background: #231834;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+#social-icon {
+  font-size: 2rem;
+}
+
+.login.heading {
+  color: white;
+  font-size: 3rem;
+}
+
+.login-input {
+  width: 50%;
+  margin: 2% 0;
+  background: #231834;
+  border: 0;
+  height: 7.5vh;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+.login-input::placeholder {
+  color: #dddddd;
+}
+
+.login.subtext {
+  color: #777777;
+  font-size: 0.9rem;
+  width: 54%;
+  margin: 1% 0 4.25% 0;
+}
+
+.login-button {
+  background: var(--accent);
+  color: white;
+  width: 50%;
+  height: 8vh;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  margin: 5% 0 2.5% 0;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.change-auth-text {
+  color: #999;
+  cursor: pointer;
+  margin-left: 40%;
+  font-weight: 500;
+}
+
+#change-auth-button {
+  font-size: 2rem;
+  margin-right: 50%;
+  cursor: pointer;
+}
