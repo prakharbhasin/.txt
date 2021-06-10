@@ -16,4 +16,22 @@ code {
   --primary: #110f19;
   --primary1: #151122;
   --accent: #4d38a2;
+  --dark-translucent: #030119b1;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+  cursor: pointer;
+  background-color: #4d38a2;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--dark-translucent);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 100rem;
+  cursor: pointer;
+  height: 10rem;
 }
