@@ -30,7 +30,8 @@
   font-size: 1.1rem;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: #e1d1ff;
+  /* color: #e1d1ff; */
+  color: #eee6ff;
   padding: 1.5% 0;
 }
 
