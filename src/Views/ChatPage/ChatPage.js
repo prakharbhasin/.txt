@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import demoImg from "../../Assets/login-bg.jpg";
 import ChatList from "../../Components/ChatList/ChatList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import {
+  faInfoCircle,
+  faPaperPlane,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 import "./ChatPage.css";
 
@@ -129,7 +133,22 @@ export default function ChatPage() {
         </div>
       </div>
       <div className={`contact-info-container ` + (showInfo ? "active" : "")}>
-        hi
+        <FontAwesomeIcon
+          id='info-close'
+          icon={faTimes}
+          onClick={() => {
+            setShowInfo(false);
+          }}
+        />
+        <img
+          className='contact-info-img'
+          src='https://avatars.githubusercontent.com/u/53562523?v=4'
+          alt=''
+        />
+        <h1 className='contact-info-name'>Ishit Beswal</h1>
+        <p className='contact-info-mail'>
+          <span>Email: </span>ib370@snu.edu.in
+        </p>
       </div>
     </div>
   );
