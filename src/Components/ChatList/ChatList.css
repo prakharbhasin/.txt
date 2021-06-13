@@ -5,5 +5,6 @@
   align-items: center;
   flex-direction: column;
   border-left: 1.5px solid #2b2039;
+  border-right: 1.5px solid #2b2039;
   overflow: auto;
 }

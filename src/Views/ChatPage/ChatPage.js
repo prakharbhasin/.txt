@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import demoImg from "../../Assets/login-bg.jpg";
 import ChatList from "../../Components/ChatList/ChatList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import "./ChatPage.css";
 
 export default function ChatPage() {
+  const [showInfo, setShowInfo] = useState(false);
   return (
     <div className='chat-container'>
       <div className='sidebar'></div>
@@ -17,6 +20,13 @@ export default function ChatPage() {
             alt='active'
           />
           <p className='active-chat-contact'>Ishit Beswal</p>
+          <FontAwesomeIcon
+            icon={faInfoCircle}
+            id='contact-info-button'
+            onClick={() => {
+              setShowInfo(true);
+            }}
+          />
         </div>
         <div className='chat-messages'>
           <div className='chat-msg-container you'>
@@ -109,6 +119,17 @@ export default function ChatPage() {
             <p className='chat-message sender'>Noicee</p>
           </div>
         </div>
+        <div className='compose-message-container'>
+          <input
+            className='compose-message'
+            type='text'
+            placeholder='Type a message'
+          />
+          <FontAwesomeIcon id='send-message-button' icon={faPaperPlane} />
+        </div>
+      </div>
+      <div className={`contact-info-container ` + (showInfo ? "active" : "")}>
+        hi
       </div>
     </div>
   );
