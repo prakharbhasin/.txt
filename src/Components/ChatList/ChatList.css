@@ -1,3 +1,8 @@
+.chat.heading {
+  padding: 5% 0;
+  width: 90%;
+  color: white;
+}
 .chat-list {
   width: 25%;
   height: 100%;

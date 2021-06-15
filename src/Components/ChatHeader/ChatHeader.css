@@ -17,3 +17,15 @@
   font-weight: 500;
   color: #eee6ff;
 }
+
+#contact-info-button {
+  margin-left: auto;
+  color: #eee6ff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#contact-info-button:hover {
+  transform: scale(1.25);
+  color: var(--accent);
+}

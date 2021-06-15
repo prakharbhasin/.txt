@@ -3,9 +3,7 @@ import ChatList from "../../Components/ChatList/ChatList";
 import ChatInfoPanel from "../../Components/ChatInfoPanel/ChatInfoPanel";
 import ChatHeader from "../../Components/ChatHeader/ChatHeader";
 import MessageContainer from "../../Components/MessageContainer/MessageContainer";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import ComposeMessage from "../../Components/ComposeMessage/ComposeMessage";
 
 import "./ChatPage.css";
 
@@ -32,14 +30,7 @@ export default function ChatPage() {
             messageBody='I am fine, what about you Prakhar?'
           />
         </div>
-        <div className='compose-message-container'>
-          <input
-            className='compose-message'
-            type='text'
-            placeholder='Type a message'
-          />
-          <FontAwesomeIcon id='send-message-button' icon={faPaperPlane} />
-        </div>
+        <ComposeMessage />
       </div>
       <ChatInfoPanel show={showInfo} toggle={toggleInfo} />
     </div>
