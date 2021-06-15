@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ChatList from "../../Components/ChatList/ChatList";
 import ChatInfoPanel from "../../Components/ChatInfoPanel/ChatInfoPanel";
+import ChatHeader from "../../Components/ChatHeader/ChatHeader";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import "./ChatPage.css";
 
@@ -18,21 +20,7 @@ export default function ChatPage() {
       <div className='sidebar'></div>
       <ChatList />
       <div className='chat-body'>
-        <div className='active-chat-header'>
-          <img
-            className='active-chat-image'
-            src='https://avatars.githubusercontent.com/u/53562523?v=4'
-            alt='active'
-          />
-          <p className='active-chat-contact'>Ishit Beswal</p>
-          <FontAwesomeIcon
-            icon={faInfoCircle}
-            id='contact-info-button'
-            onClick={() => {
-              setShowInfo(true);
-            }}
-          />
-        </div>
+        <ChatHeader toggle={toggleInfo} />
         <div className='chat-messages'>
           <div className='chat-msg-container you'>
             <img
