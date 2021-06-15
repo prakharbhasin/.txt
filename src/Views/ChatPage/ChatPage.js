@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ChatList from "../../Components/ChatList/ChatList";
 import ChatInfoPanel from "../../Components/ChatInfoPanel/ChatInfoPanel";
 import ChatHeader from "../../Components/ChatHeader/ChatHeader";
+import MessageContainer from "../../Components/MessageContainer/MessageContainer";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -22,95 +23,14 @@ export default function ChatPage() {
       <div className='chat-body'>
         <ChatHeader toggle={toggleInfo} />
         <div className='chat-messages'>
-          <div className='chat-msg-container you'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message you'>Hi Ishit, How are you?</p>
-          </div>
-
-          <div className='chat-msg-container sender'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message sender'>I'm good, what's up?</p>
-          </div>
-          <div className='chat-msg-container you'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message you'>I got an award today!</p>
-          </div>
-          <div className='chat-msg-container sender'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message sender'>I'm good, what's up?</p>
-          </div>
-          <div className='chat-msg-container you'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message you'>I got an award today!</p>
-          </div>
-          <div className='chat-msg-container sender'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message sender'>I'm good, what's up?</p>
-          </div>
-          <div className='chat-msg-container you'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message you'>I got an award today!</p>
-          </div>
-          <div className='chat-msg-container sender'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message sender'>I'm good, what's up?</p>
-          </div>
-          <div className='chat-msg-container you'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message you'>I got an award today!</p>
-          </div>
-          <div className='chat-msg-container sender'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message sender'>Oh wow!</p>
-          </div>
-          <div className='chat-msg-container sender'>
-            <img
-              src='https://avatars.githubusercontent.com/u/53562523?v=4'
-              alt=''
-              className='in-chat-image'
-            />
-            <p className='chat-message sender'>Noicee</p>
-          </div>
+          <MessageContainer
+            sentMsg={true}
+            messageBody='Hi Ishit, how are You?'
+          />
+          <MessageContainer
+            sentMsg={false}
+            messageBody='I am fine, what about you Prakhar?'
+          />
         </div>
         <div className='compose-message-container'>
           <input
