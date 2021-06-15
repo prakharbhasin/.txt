@@ -12,7 +12,7 @@
 }
 
 .recent-chat-container.active {
-  background-color: #1a182d;
+  background-color: var(--primary-active);
 }
 
 .recent-chat-details {
@@ -30,18 +30,17 @@
   font-size: 1.1rem;
   text-overflow: ellipsis;
   overflow: hidden;
-  /* color: #e1d1ff; */
-  color: #eee6ff;
+  color: var(--sub-acc-1);
   padding: 1.5% 0;
 }
 
 .recent-chat-text {
   font-size: 0.85rem;
   text-overflow: ellipsis;
-  color: #6f678b;
+  color: var(--sub-acc-1);
 }
 
 .recent-chat-time {
   font-size: 0.7rem;
-  color: #b0acae;
+  color: var(--time-text);
 }

@@ -1,9 +1,10 @@
 .active-chat-header {
   height: 10%;
-  background-color: #1a182d;
+  background-color: var(--primary-active);
   display: flex;
   align-items: center;
   padding: 0 2.5%;
+  border-radius: 0 0 5px 5px;
 }
 
 .active-chat-image {
@@ -15,12 +16,12 @@
   padding: 0 2%;
   font-size: 1.25rem;
   font-weight: 500;
-  color: #eee6ff;
+  color: var(--sub-acc-1);
 }
 
 #contact-info-button {
   margin-left: auto;
-  color: #eee6ff;
+  color: var(--sub-acc-1);
   font-size: 1.5rem;
   cursor: pointer;
 }

@@ -14,11 +14,51 @@ code {
     monospace;
 }
 
-:root {
+/* :root {
   --primary: #110f19;
   --primary1: #151122;
+  --primary-active: #1a182d;
   --accent: #4d38a2;
-  --dark-translucent: #110f19b7;
+  --sub-acc-1: #eee6ff;
+  --sub-acc-2: #6f678b;
+  --sender-bg: #19182a;
+  --sender-text: #ada9b9;
+  --user-text: white;
+  --time-text: #b0acae;
+  --chat-border: #2b2039;
+  --primary-translucent: #110f19b7;
+  --tbd-chat-mail: #241937;
+} */
+
+#dark-theme {
+  --primary: #110f19;
+  --primary1: #151122;
+  --primary-active: #1a182d;
+  --accent: #4d38a2;
+  --sub-acc-1: #eee6ff;
+  --sub-acc-2: #6f678b;
+  --sender-bg: #19182a;
+  --sender-text: #ada9b9;
+  --user-text: white;
+  --time-text: #b0acae;
+  --chat-border: #2b2039;
+  --primary-translucent: #110f19b7;
+  --tbd-chat-mail: #241937;
+}
+
+#light-theme {
+  --primary: #eeeeee;
+  --primary-active: #efe0f7;
+  /* --accent: #6749dc; */
+  --accent: #f05;
+  --sub-acc-1: #6f5eb1;
+  --sub-acc-2: #6f678b;
+  --sender-bg: #f8f7f7;
+  --sender-text: black;
+  --user-text: black;
+  --time-text: #969696;
+  --chat-border: #d9d9e9;
+  --primary-transluscent: black;
 }
 
 *::-webkit-scrollbar {

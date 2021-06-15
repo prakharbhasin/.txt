@@ -35,7 +35,7 @@
   font-size: 1rem;
   width: 47.5%;
   height: 17.5vh;
-  background: #231834;
+  background: var(--primary-active);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,25 +51,25 @@
 }
 
 .login.heading {
-  color: white;
+  color: var(--user-text);
   font-size: 3rem;
 }
 
 .login-input {
   width: 50%;
   margin: 2% 0;
-  background: #231834;
+  background: var(--primary-active);
   border: 0;
   height: 7.5vh;
   border-radius: 5px;
   padding-left: 10px;
 }
 .login-input::placeholder {
-  color: #dddddd;
+  color: var(--sub-acc-1);
 }
 
 .login.subtext {
-  color: #777777;
+  color: var(--sub-acc-2);
   font-size: 0.9rem;
   width: 54%;
   margin: 1% 0 4.25% 0;
@@ -77,7 +77,7 @@
 
 .login-button {
   background: var(--accent);
-  color: white;
+  color: var(--user-text);
   width: 50%;
   height: 8vh;
   cursor: pointer;
@@ -92,7 +92,7 @@
 }
 
 .change-auth-text {
-  color: #999;
+  color: var(--time-text);
   cursor: pointer;
   margin-left: 40%;
   font-weight: 500;

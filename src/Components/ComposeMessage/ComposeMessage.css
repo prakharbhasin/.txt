@@ -4,22 +4,22 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: #eee6ff;
+  color: var(--sub-acc-1);
 }
 
 .compose-message {
   height: 70%;
   width: 90%;
-  border: 2px solid #6f678b;
+  border: 2px solid var(--sub-acc-2);
   background: transparent;
   border-radius: 10px;
   padding-left: 10px;
-  color: #eee6ff;
+  color: var(--sub-acc-1);
   transition: 0.1s ease-in-out;
 }
 
 .compose-message::placeholder {
-  color: #eee6ff;
+  color: var(--sub-acc-1);
 }
 
 .compose-message:focus {

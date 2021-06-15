@@ -8,13 +8,13 @@
 
 .chat-message.you {
   background-color: var(--accent);
-  color: white;
+  color: var(--user-text);
 }
 
 .chat-message.sender {
   margin-right: auto;
-  background-color: #19182a;
-  color: #ada9b9;
+  background-color: var(--sender-bg);
+  color: var(--sender-text);
 }
 
 .chat-messages {

@@ -1,7 +1,7 @@
 .chat.heading {
   padding: 5% 0;
   width: 90%;
-  color: white;
+  color: var(--user-text);
 }
 .chat-list {
   width: 25%;
@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-left: 1.5px solid #2b2039;
-  border-right: 1.5px solid #2b2039;
+  border-left: 1.5px solid var(--chat-border);
+  border-right: 1.5px solid var(--chat-border);
   overflow: auto;
 }

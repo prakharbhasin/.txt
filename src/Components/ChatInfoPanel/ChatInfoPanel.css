@@ -1,6 +1,5 @@
 .contact-info-container {
   z-index: 1000;
-  background-color: aqua;
   position: absolute;
   transform: translate(200%);
   height: 89.5%;
@@ -11,7 +10,7 @@
   align-items: center;
   padding: 2.5% 0;
   border-radius: 10px 0 0 10px;
-  background-color: var(--dark-translucent);
+  background-color: var(--primary-translucent);
   backdrop-filter: blur(12.5px);
   -webkit-backdrop-filter: blur(12.5px);
 }
@@ -28,26 +27,26 @@
 }
 
 .contact-info-name {
-  color: #eee6ff;
+  color: var(--sub-acc-1);
   margin: 5%;
 }
 
 .contact-info-mail {
-  color: #6f678b;
+  color: var(--sub-acc-2);
   width: 70%;
   padding: 5% 2.5%;
-  background: #241937;
+  background: var(--primary-active);
   border-radius: 10px;
   text-align: center;
   border: 2px solid var(--accent);
 }
 .contact-info-mail span {
-  color: #eee6ff;
+  color: var(--sub-acc-1);
   padding-right: 5%;
 }
 
 #info-close {
-  color: #6f678b;
+  color: var(--sub-acc-2);
   font-size: 2rem;
   margin-right: auto;
   margin-left: 7.5%;
