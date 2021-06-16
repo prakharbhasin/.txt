@@ -37,7 +37,7 @@
 .recent-chat-text {
   font-size: 0.85rem;
   text-overflow: ellipsis;
-  color: var(--sub-acc-1);
+  color: var(--sub-acc-2);
 }
 
 .recent-chat-time {
