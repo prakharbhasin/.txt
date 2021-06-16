@@ -44,6 +44,7 @@ code {
   --time-text: #b0acae;
   --chat-border: #2b2039;
   --primary-translucent: #110f19b7;
+  --shadow-color: rgba(77, 56, 162, 0.5);
   --tbd-chat-mail: #241937;
 }
 
@@ -60,8 +61,9 @@ code {
   --sender-text: black;
   --user-text: white;
   --time-text: #969696;
-  --chat-border: #d9d9e9;
+  --chat-border: #ff005534;
   --primary-transluscent: black;
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 *::-webkit-scrollbar {

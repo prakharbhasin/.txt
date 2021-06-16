@@ -19,7 +19,7 @@
 
 .chat-messages {
   display: flex;
-  height: 80.75%;
+  height: 77.75%;
   flex-direction: column;
   overflow: auto;
   padding: 0.5% 0;
