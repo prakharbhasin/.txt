@@ -12,6 +12,7 @@ import ChatInfoPanel from "../../Components/ChatInfoPanel/ChatInfoPanel";
 import ChatHeader from "../../Components/ChatHeader/ChatHeader";
 import MessageContainer from "../../Components/MessageContainer/MessageContainer";
 import ComposeMessage from "../../Components/ComposeMessage/ComposeMessage";
+import ToggleButton from "../../Components/toggleButton";
 
 import "./ChatPage.css";
 
@@ -29,11 +30,12 @@ export default function ChatPage() {
     <div className='chat-container'>
       <div className='sidebar'>
         <FontAwesomeIcon icon={faQuoteLeft} id='sidebar-icons' />
-        <FontAwesomeIcon
+        <ToggleButton />
+        {/* <FontAwesomeIcon
           icon={theme ? faLightbulb : farLightBulb}
           onClick={toggle}
           id='sidebar-icons'
-        ></FontAwesomeIcon>
+        ></FontAwesomeIcon> */}
       </div>
       <ChatList />
       <div className='chat-body'>
