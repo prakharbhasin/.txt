@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginCard from "../../Components/AuthComponents/LoginCard";
 import SignUpCard from "../../Components/AuthComponents/SignUpCard";
-import ToggleButton from "../../Components/toggleButton";
+// import ToggleButton from "../../Components/toggleButton";
 
 import LoginIllus from "../../Assets/login-illus1.png";
 import "./AuthPage.css";
