@@ -114,3 +114,39 @@ div img svg#sidebar-icons {
   bottom: 2.5%;
   left: 2.5%;
 }
+
+@media (max-width: 800px) {
+  div.login-section:nth-child(1) {
+    display: none;
+  }
+
+  div.login-section:nth-child(2) {
+    width: 100%;
+    text-align: center;
+  }
+  .login.heading {
+    font-size: 2.75rem;
+  }
+  .login.subtext {
+    width: 85%;
+  }
+
+  div.social-login-container {
+    width: 80%;
+    margin: 7.5%;
+    height: 15vh;
+  }
+
+  #social-icon {
+    font-size: 2.25rem;
+  }
+
+  .login-input {
+    width: 80%;
+  }
+  .login-button {
+    width: 77.5%;
+    font-size: 1.1rem;
+    margin: 7.5% 0 4.25% 0;
+  }
+}
