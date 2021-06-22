@@ -11,5 +11,15 @@
   flex-direction: column;
   border-left: 1.5px solid var(--chat-border);
   border-right: 1.5px solid var(--chat-border);
+  background-color: var(--primary);
   overflow: auto;
+}
+
+@media (max-width: 800px) {
+  .chat-list {
+    z-index: 100;
+    width: 100%;
+    position: absolute;
+    /* background: white; */
+  }
 }
