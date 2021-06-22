@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
-
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import ChatList from "../../Components/ChatList/ChatList";
 import ChatInfoPanel from "../../Components/ChatInfoPanel/ChatInfoPanel";
 import ChatHeader from "../../Components/ChatHeader/ChatHeader";
 import MessageContainer from "../../Components/MessageContainer/MessageContainer";
 import ComposeMessage from "../../Components/ComposeMessage/ComposeMessage";
-import ToggleButton from "../../Components/toggleButton";
 
 import "./ChatPage.css";
 
@@ -21,10 +18,7 @@ export default function ChatPage() {
 
   return (
     <div className='chat-container'>
-      <div className='sidebar'>
-        <FontAwesomeIcon icon={faQuoteLeft} id='sidebar-icons' />
-        <ToggleButton />
-      </div>
+      <Sidebar />
       <ChatList />
       <div className='chat-body'>
         <ChatHeader toggle={toggleInfo} />
