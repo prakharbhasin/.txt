@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faFacebookF } from "@fortawesome/free-brands-svg-icons";
+
+toast.configure();
 
 export default function LoginCard({ toggle }) {
   const [loggedUser, setLoggedUser] = useState({});

@@ -32,7 +32,7 @@ const signIn = (req, res, next) => {
       req.login(logUser, (err) => {
         if (err) throw err;
         res.send({
-          message: `Successfully Authenticated, welcome back ${logUser.name}`,
+          message: `Welcome back, ${logUser.name}`,
           success: true,
           logUser,
         });

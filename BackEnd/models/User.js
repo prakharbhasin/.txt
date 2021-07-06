@@ -48,19 +48,5 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.statics.signin = async function (email, password) {
-  const currUser = await this.findOne({ email });
-
-  if (currUser) {
-    const success = authUtils.verifyPass(password, currUser.password);
-
-    if (success) {
-      return currUser;
-    }
-    throw Error("Entered Password is incorrect.");
-  }
-  throw Error("No User with the given Email address exists.");
-};
-
 const User = mongoose.model("User", userSchema);
 module.exports = User;

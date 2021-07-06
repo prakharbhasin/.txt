@@ -8,6 +8,7 @@ module.exports = (passport) => {
       Users.findOne({ email: email }).then(async (currUser) => {
         if (!currUser) {
           return done(null, false, {
+            success: false,
             message: "No User with the given email is registered",
           });
         }
@@ -23,7 +24,7 @@ module.exports = (passport) => {
         } else {
           return done(null, false, {
             success: false,
-            message: "The entered Password is Incorrect",
+            message: "The Entered Password is Incorrect",
           });
         }
       });
