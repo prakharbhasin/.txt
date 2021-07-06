@@ -23,6 +23,16 @@ const avatarURLGenerator = (name) => {
   )}&background=random&bold=true`;
 };
 
+const handleErrors = (error) => {
+  const err = { message: "", code: 406, success: false };
+
+  if (error.code === 11000) {
+    err.message = "User with entered email ID already exists!";
+    err.code = 409;
+    return err;
+  }
+};
+
 //SignIn Utils
 const verifyPass = (inputPass, hashedPass) => {
   return bcrypt.compare(inputPass, hashedPass);
@@ -32,4 +42,5 @@ module.exports = {
   hashPass,
   avatarURLGenerator,
   verifyPass,
+  handleErrors,
 };

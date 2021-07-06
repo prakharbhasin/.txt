@@ -54,12 +54,19 @@
   font-size: 3rem;
 }
 
-.login-input {
+.auth-form {
   width: 50%;
-  margin: 2% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-input {
+  width: 100%;
+  margin: 2.5% 0;
   background: var(--primary-active);
   border: 0;
-  height: 7.5vh;
+  height: 8vh;
   border-radius: 5px;
   padding-left: 10px;
   color: var(--accent);
@@ -83,7 +90,7 @@
 .login-button {
   background: var(--accent);
   color: var(--user-text);
-  width: 50%;
+  width: 105%;
   height: 8vh;
   cursor: pointer;
   border: 0;
@@ -106,6 +113,7 @@
 #change-auth-button {
   font-size: 2rem;
   margin-right: 50%;
+  margin-bottom: 1%;
   cursor: pointer;
 }
 

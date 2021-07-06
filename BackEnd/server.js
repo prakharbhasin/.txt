@@ -4,12 +4,14 @@ const passport = require("passport");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const morgan = require("morgan");
 
 const connectDB = require("./config/db");
 const pageRouter = require("./routes/index");
-dotenv.config({ path: "./config/config.env" });
 
+dotenv.config({ path: "./config/config.env" });
 connectDB();
+require("./config/passport-local")(passport);
 
 const server = express();
 
@@ -34,6 +36,7 @@ server.use(cookieParser("Prakhars chat app"));
 
 server.use(passport.initialize());
 server.use(passport.session());
+server.use(morgan("dev"));
 
 const PORT = process.env.PORT || 5000;
 
