@@ -9,7 +9,7 @@ const signUp = async (req, res) => {
   userDetails.displayPicture = avatarUrl;
   Users.create(userDetails).then((newUser) => {
     const { email, _id, name, username, image, accountType, displayPicture } =
-      user;
+      newUser;
     return res.status(201).send({
       message: "Successfully registered!",
     });
@@ -18,7 +18,7 @@ const signUp = async (req, res) => {
 
 const signIn = (passport) => {
   passport.use(
-    new localStrategy({ usernameField: email }, (email, password, finish) => {
+    new localStrategy({ usernameField: "email" }, (email, password, finish) => {
       Users.findOne({ email: email }).then((currUser) => {
         if (!currUser) {
           return finish(null, false, {

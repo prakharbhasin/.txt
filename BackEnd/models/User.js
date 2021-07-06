@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
+const authUtils = require("../utils/auth");
 
 const Schema = mongoose.Schema;
 
@@ -41,6 +42,12 @@ const userSchema = Schema(
   { timestamps: true }
 );
 
+userSchema.pre("save", async function (next) {
+  this.password = await authUtils.hashPass(this.password);
+
+  next();
+});
+
 userSchema.statics.signin = async function (email, password) {
   const currUser = await this.findOne({ email });
 
@@ -57,5 +64,3 @@ userSchema.statics.signin = async function (email, password) {
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
-
-// userSchema.pre()
