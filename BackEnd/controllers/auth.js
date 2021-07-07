@@ -10,15 +10,26 @@ const signUp = async (req, res) => {
   userDetails.accountType = "email";
   Users.create(userDetails)
     .then((newUser) => {
-      const { email, _id, name, username, image, accountType, displayPicture } =
+      const { email, _id, name, username, accountType, displayPicture } =
         newUser;
+      const userInfo = {
+        email,
+        _id,
+        name,
+        username,
+        accountType,
+        displayPicture,
+      };
+      const auth_token = authUtil.createToken(userInfo);
       return res.status(201).send({
         message: "Successfully registered!",
         success: true,
         userInfo,
+        auth_token,
       });
     })
     .catch((err) => {
+      console.log(err);
       const errors = authUtil.handleErrors(err);
       res.send(errors);
     });

@@ -1,4 +1,6 @@
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { token } = require("morgan");
 
 //Sign Up Utils
 const hashPass = (password) => {
@@ -23,6 +25,15 @@ const avatarURLGenerator = (name) => {
   )}&background=random&bold=true`;
 };
 
+const createToken = (userInfo) => {
+  const auth_token = jwt.sign(userInfo, process.env.JWT_SECRET, {
+    expiresIn: "7d",
+    algorithm: process.env.JWT_ALGO,
+  });
+
+  return auth_token;
+};
+
 const handleErrors = (error) => {
   const err = { message: "", code: 406, success: false };
 
@@ -43,4 +54,5 @@ module.exports = {
   avatarURLGenerator,
   verifyPass,
   handleErrors,
+  createToken,
 };
