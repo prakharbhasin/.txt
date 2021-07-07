@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useStoreActions } from "easy-peasy";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faFacebookF } from "@fortawesome/free-brands-svg-icons";
@@ -9,6 +10,9 @@ toast.configure();
 
 export default function LoginCard({ toggle }) {
   const [loggedUser, setLoggedUser] = useState({});
+  const setToken = useStoreActions((actions) => actions.setToken);
+  const toggleLog = useStoreActions((actions) => actions.toggleLog);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoggedUser({ ...loggedUser, [name]: value });
@@ -34,6 +38,9 @@ export default function LoginCard({ toggle }) {
         let responseData = response.data;
         if (responseData.success) {
           toast.success(responseData.message);
+          setToken(responseData.auth_token);
+          toggleLog();
+          localStorage.setItem("authToken", responseData.auth_token);
           console.log(responseData);
         } else {
           console.log(responseData.message);

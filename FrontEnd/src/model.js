@@ -4,7 +4,15 @@ import { action } from "easy-peasy";
 
 export default {
   darkTheme: true,
-  toggle: action((state) => {
+  authToken: "",
+  isLogged: false,
+  toggleTheme: action((state) => {
     state.darkTheme = !state.darkTheme;
+  }),
+  toggleLog: action((state) => {
+    state.isLogged = !state.isLogged;
+  }),
+  setToken: action((state, token) => {
+    state.authToken = token;
   }),
 };

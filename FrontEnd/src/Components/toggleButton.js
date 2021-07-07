@@ -6,7 +6,7 @@ import { useStoreState, useStoreActions } from "easy-peasy";
 
 export default function ToggleButton() {
   const theme = useStoreState((state) => state.darkTheme);
-  const toggle = useStoreActions((actions) => actions.toggle);
+  const toggle = useStoreActions((actions) => actions.toggleTheme);
   return (
     <FontAwesomeIcon
       icon={theme ? faLightbulb : farLightBulb}

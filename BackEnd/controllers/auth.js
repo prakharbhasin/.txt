@@ -42,15 +42,30 @@ const signIn = (req, res, next) => {
     else {
       req.login(logUser, (err) => {
         if (err) throw err;
+        const { email, _id, name, username, accountType, displayPicture } =
+          logUser;
+        const userInfo = {
+          email,
+          _id,
+          name,
+          username,
+          accountType,
+          displayPicture,
+        };
+
+        const auth_token = authUtil.createToken(userInfo);
         res.send({
-          message: `Welcome back, ${logUser.name}`,
+          auth_token,
+          message: `Welcome back, ${userInfo.name}`,
           success: true,
-          logUser,
+          userInfo,
         });
       });
     }
   })(req, res, next);
 };
+
+const handleLog = (req, res) => {};
 
 module.exports = {
   signIn,
