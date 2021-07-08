@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import LoginCard from "../../Components/AuthComponents/LoginCard";
 import SignUpCard from "../../Components/AuthComponents/SignUpCard";
-// import ToggleButton from "../../Components/toggleButton";
+import { Redirect } from "react-router-dom";
+import { useStoreState } from "easy-peasy";
 
 import LoginIllus from "../../Assets/login-illus1.png";
 import "./AuthPage.css";
 
 export default function AuthPage() {
   const [newUser, setNewUser] = useState(false);
+  const isLogged = useStoreState((state) => state.isLogged);
 
   const getCard = () => {
     switch (newUser) {
@@ -27,6 +29,7 @@ export default function AuthPage() {
 
   return (
     <div className='login-container'>
+      {isLogged ? <Redirect to='/chat' /> : ""}
       <div className='login-section'>
         <img src={LoginIllus} alt='Login!' className='login-illus' />
       </div>

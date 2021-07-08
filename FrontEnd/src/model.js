@@ -12,6 +12,7 @@ export default {
   isLogged: false,
   userInfo: {},
 
+  //SignUp
   signUp: thunk((actions, newUser) => {
     var config = {
       method: "post",
@@ -27,7 +28,7 @@ export default {
         if (responseData.success) {
           toast.success(responseData.message);
           actions.setToken(responseData.auth_token);
-          actions.toggleLog();
+          actions.setUser(responseData.userInfo);
           localStorage.setItem("authToken", responseData.auth_token);
           console.log(responseData);
         } else {
@@ -40,6 +41,7 @@ export default {
       });
   }),
 
+  //SignIn
   signIn: thunk((actions, userInfo) => {
     var config = {
       method: "post",
@@ -55,7 +57,7 @@ export default {
         if (responseData.success) {
           toast.success(responseData.message);
           actions.setToken(responseData.auth_token);
-          actions.toggleLog();
+          actions.setUser(responseData.userInfo);
           localStorage.setItem("authToken", responseData.auth_token);
           console.log(responseData);
         } else {
@@ -68,17 +70,57 @@ export default {
       });
   }),
 
+  verifyUser: thunk(async (actions) => {
+    let authToken = await cookies.load("ChatAppToken");
+    console.log(`token: ${authToken}`);
+    if (authToken === undefined) {
+      actions.signOut();
+    } else {
+      var config = {
+        method: "get",
+        url: "http://localhost:5000/auth/verify",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authToken,
+        },
+      };
+
+      axios(config).then(async (response) => {
+        let responseData = await response.data;
+        if (responseData.success) {
+          toast.success(responseData.message);
+          actions.setToken(authToken);
+          console.log(responseData);
+          actions.setUser(responseData.user);
+          localStorage.setItem("authToken", responseData.auth_token);
+          // console.log(responseData);
+        } else {
+          console.log(responseData.message);
+          toast.error(responseData.message);
+        }
+      });
+    }
+  }),
+
   //Actions
   toggleTheme: action((state) => {
     state.darkTheme = !state.darkTheme;
   }),
 
-  toggleLog: action((state) => {
-    state.isLogged = !state.isLogged;
-  }),
-
   setToken: action((state, token) => {
     cookies.save("ChatAppToken", token);
     state.authToken = token;
+  }),
+
+  setUser: action((state, userInfo) => {
+    state.isLogged = true;
+    state.userInfo = userInfo;
+  }),
+
+  signOut: action((state) => {
+    cookies.remove("ChatAppToken");
+    state.isLogged = false;
+    state.authToken = null;
+    state.userInfo = {};
   }),
 };
