@@ -30,10 +30,10 @@ export default function AuthPage() {
   return (
     <div className='login-container'>
       {isLogged ? <Redirect to='/chat' /> : ""}
-      <div className='login-section'>
+      <div className='section'>
         <img src={LoginIllus} alt='Login!' className='login-illus' />
       </div>
-      <div className='login-section'>
+      <div className='section'>
         <h1 className='login heading'>Come. Connect.</h1>
         <p className='login subtext'>Interesting by-line goes here lol</p>
         {getCard()}

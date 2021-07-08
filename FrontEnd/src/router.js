@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "./Views/AuthPage/AuthPage";
 import ChatPage from "./Views/ChatPage/ChatPage";
+import ErrorPage from "./Views/404Page/404Page";
+
 import { useStoreActions, useStoreState } from "easy-peasy";
 
 export default function Router() {
@@ -20,6 +22,7 @@ export default function Router() {
         </Route>
         <Route exact path='/auth' component={AuthPage} />
         <Route exact path='/chat' component={ChatPage} />
+        <Route component={ErrorPage} />
       </Switch>
     </BrowserRouter>
   );
