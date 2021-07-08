@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useStoreActions } from "easy-peasy";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,8 +9,7 @@ toast.configure();
 
 export default function LoginCard({ toggle }) {
   const [loggedUser, setLoggedUser] = useState({});
-  const setToken = useStoreActions((actions) => actions.setToken);
-  const toggleLog = useStoreActions((actions) => actions.toggleLog);
+  const signIn = useStoreActions((actions) => actions.signIn);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,31 +23,7 @@ export default function LoginCard({ toggle }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     var data = JSON.stringify({ ...loggedUser });
-    var config = {
-      method: "post",
-      url: "http://localhost:5000/auth/signin",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-    axios(config)
-      .then(function (response) {
-        let responseData = response.data;
-        if (responseData.success) {
-          toast.success(responseData.message);
-          setToken(responseData.auth_token);
-          toggleLog();
-          localStorage.setItem("authToken", responseData.auth_token);
-          console.log(responseData);
-        } else {
-          console.log(responseData.message);
-          toast.error(responseData.message);
-        }
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    signIn(data);
   };
   return (
     <>
@@ -63,7 +37,7 @@ export default function LoginCard({ toggle }) {
           Facebook
         </button>
       </div>
-      <form class='auth-form' onSubmit={handleSubmit}>
+      <form className='auth-form' onSubmit={handleSubmit}>
         <input
           className='login-input'
           type='text'

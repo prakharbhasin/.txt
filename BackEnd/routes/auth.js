@@ -9,4 +9,8 @@ router.post("/signup", (req, res) => {
   authController.signUp(req, res);
 });
 
+router.get("/verify", (req, res) => {
+  authController.verifyUser(req, res);
+});
+
 module.exports = { router };

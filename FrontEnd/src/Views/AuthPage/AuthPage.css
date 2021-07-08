@@ -69,7 +69,7 @@
   height: 8vh;
   border-radius: 5px;
   padding-left: 10px;
-  color: var(--accent);
+  color: var(--sub-acc-1);
 }
 
 .login-input:focus {

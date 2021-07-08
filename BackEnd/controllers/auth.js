@@ -1,4 +1,6 @@
 const passport = require("passport");
+const jwt = require("jsonwebtoken");
+
 const Users = require("../models/User");
 const authUtil = require("../utils/auth");
 
@@ -65,9 +67,24 @@ const signIn = (req, res, next) => {
   })(req, res, next);
 };
 
-const handleLog = (req, res) => {};
+const verifyUser = (req, res, next) => {
+  const token = req.headers.authorization;
+  const auth_token = token.replace(/^Bearer\s/, "");
+  console.log(auth_token);
+
+  if (!auth_token)
+    res.send({ success: false, message: "Authentication Invalid" });
+  try {
+    const decodedToken = jwt.verify(auth_token, process.env.JWT_SECRET);
+    console.log(decodedToken);
+    res.send({ success: true, user: decodedToken });
+  } catch (error) {
+    res.send({ success: false, message: "Login expired. Please Login Again" });
+  }
+};
 
 module.exports = {
   signIn,
   signUp,
+  verifyUser,
 };
