@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { useStoreActions } from "easy-peasy";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
 export default function SignUpCard({ toggle }) {
-  toast.configure();
   const [newUser, setNewUser] = useState({});
+  const signIn = useStoreActions((actions) => actions.signUp);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,27 +19,7 @@ export default function SignUpCard({ toggle }) {
   const handleSignUp = (e) => {
     e.preventDefault();
     var data = JSON.stringify({ ...newUser });
-    var config = {
-      method: "post",
-      url: "http://localhost:5000/auth/signup",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-    axios(config)
-      .then(function (response) {
-        let responseData = response.data;
-        if (responseData.success) {
-          toast.success(responseData.message);
-        } else {
-          console.log(responseData.message);
-          toast.error(responseData.message);
-        }
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    signIn(data);
   };
 
   return (

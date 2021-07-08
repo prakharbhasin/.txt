@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+
 import { useStoreActions } from "easy-peasy";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faFacebookF } from "@fortawesome/free-brands-svg-icons";
-
-toast.configure();
 
 export default function LoginCard({ toggle }) {
   const [loggedUser, setLoggedUser] = useState({});

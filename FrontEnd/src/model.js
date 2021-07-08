@@ -10,6 +10,35 @@ export default {
   darkTheme: true,
   authToken: null,
   isLogged: false,
+  userInfo: {},
+
+  signUp: thunk((actions, newUser) => {
+    var config = {
+      method: "post",
+      url: "http://localhost:5000/auth/signup",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: newUser,
+    };
+    axios(config)
+      .then(async (response) => {
+        let responseData = await response.data;
+        if (responseData.success) {
+          toast.success(responseData.message);
+          actions.setToken(responseData.auth_token);
+          actions.toggleLog();
+          localStorage.setItem("authToken", responseData.auth_token);
+          console.log(responseData);
+        } else {
+          console.log(responseData.message);
+          toast.error(responseData.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }),
 
   signIn: thunk((actions, userInfo) => {
     var config = {
