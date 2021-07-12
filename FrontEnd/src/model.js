@@ -90,10 +90,8 @@ export default {
         if (responseData.success) {
           toast.success(responseData.message);
           actions.setToken(authToken);
-          console.log(responseData);
           actions.setUser(responseData.user);
           localStorage.setItem("authToken", responseData.auth_token);
-          // console.log(responseData);
         } else {
           console.log(responseData.message);
           toast.error(responseData.message);
