@@ -8,11 +8,19 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 
 export default function Router() {
   const verifyUser = useStoreActions((actions) => actions.verifyUser);
+  const getChats = useStoreActions((actions) => actions.getChats);
+  const userID = useStoreState((state) => state.userInfo)._id;
   const islogged = useStoreState((state) => state.isLogged);
 
   useEffect(() => {
     verifyUser();
   }, []);
+
+  useEffect(() => {
+    if (userID !== undefined) {
+      getChats(userID);
+    }
+  }, userID);
 
   return (
     <BrowserRouter>

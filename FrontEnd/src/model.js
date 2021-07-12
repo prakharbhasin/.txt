@@ -11,6 +11,7 @@ export default {
   authToken: null,
   isLogged: false,
   userInfo: {},
+  chats: {},
 
   //SignUp
   signUp: thunk((actions, newUser) => {
@@ -100,6 +101,26 @@ export default {
     }
   }),
 
+  getChats: thunk(async (actions, userID) => {
+    console.log(userID);
+    var config = {
+      method: "get",
+      url: `http://localhost:5000/conversation/getall/${userID}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    axios(config).then(async (response) => {
+      let responseData = await response.data;
+      if (responseData.success) {
+        console.log(responseData);
+        actions.setChats(responseData.conversations);
+      } else {
+        console.error(responseData);
+      }
+    });
+  }),
+
   //Actions
   toggleTheme: action((state) => {
     state.darkTheme = !state.darkTheme;
@@ -113,6 +134,10 @@ export default {
   setUser: action((state, userInfo) => {
     state.isLogged = true;
     state.userInfo = userInfo;
+  }),
+
+  setChats: action((state, chats) => {
+    state.chats = chats;
   }),
 
   signOut: action((state) => {
