@@ -11,7 +11,7 @@ export default {
   authToken: null,
   isLogged: false,
   userInfo: {},
-  chats: {},
+  chats: [],
 
   //SignUp
   signUp: thunk((actions, newUser) => {

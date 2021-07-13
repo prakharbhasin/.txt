@@ -12,8 +12,18 @@ const MessageSchema = Schema(
       ref: "Conversation",
       required: true,
     },
-    sender: {
+    senderID: {
       type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    senderName: {
+      type: String,
+      ref: "User",
+      required: true,
+    },
+    senderImage: {
+      type: String,
       ref: "User",
       required: true,
     },

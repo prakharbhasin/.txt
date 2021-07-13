@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken");
-
 const Conversations = require("../models/Conversation");
 const Users = require("../models/User");
 const authUtil = require("../utils/auth");
@@ -21,7 +19,7 @@ const getAllConversations = async (req, res) => {
 
 const createConversation = async (req, res) => {
   var convoDetails = req.body;
-  console.log(convoDetails);
+  // console.log(convoDetails);
   if (convoDetails.members.length == 2) {
     await Users.find(
       { _id: convoDetails.members[1] },
@@ -58,7 +56,7 @@ const createConversation = async (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.send({ message: "Error in Creating Conversations", success: true });
+      res.send({ message: "Error in Creating Conversations", success: false });
     });
 };
 

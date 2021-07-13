@@ -6,12 +6,14 @@ import { useStoreState } from "easy-peasy";
 export default function ChatPanel() {
   const chats = useStoreState((state) => state.chats);
 
-  useEffect(() => {}, [chats]);
+  useEffect(() => {
+    console.log(chats);
+  }, [chats]);
   //
   return (
     <div className='chat-list'>
       <h1 className='chat heading'>Chats</h1>
-      {/* {chats !== []
+      {chats !== []
         ? chats.map((c) => {
             return (
               <RecentChat
@@ -24,7 +26,7 @@ export default function ChatPanel() {
               />
             );
           })
-        : ""} */}
+        : ""}
       <RecentChat
         senderName='Ishit Beswal'
         lastSender='You'

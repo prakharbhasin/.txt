@@ -20,7 +20,7 @@ export default function Router() {
     if (userID !== undefined) {
       getChats(userID);
     }
-  }, userID);
+  }, [userID]);
 
   return (
     <BrowserRouter>
