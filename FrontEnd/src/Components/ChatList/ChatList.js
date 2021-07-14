@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import RecentChat from "../RecentChat/RecentChat";
 import "./ChatList.css";
-import { useStoreState } from "easy-peasy";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 export default function ChatPanel() {
   const chats = useStoreState((state) => state.chats);
+  const currentChat = useStoreState((state) => state.currentChat);
 
   useEffect(() => {
     console.log(chats);
@@ -22,19 +23,20 @@ export default function ChatPanel() {
                 lastMessage='LOL'
                 Time='20:13'
                 senderImage={c.displayPicture}
-                active={false}
+                active={c._id == currentChat ? true : false}
+                id={c._id}
               />
             );
           })
         : ""}
-      <RecentChat
+      {/* <RecentChat
         senderName='Ishit Beswal'
         lastSender='You'
         lastMessage='LOL'
         Time='20:13'
         senderImage='https://avatars.githubusercontent.com/u/53562523?v=4'
         active={false}
-      />
+      /> */}
       {/*<RecentChat
         senderName='Ishit Beswal'
         lastSender='Ishit'

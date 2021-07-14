@@ -9,4 +9,8 @@ router.post("/new", async (req, res) => {
   msgController.newMessage(req, res);
 });
 
+router.get("/get/:convoID", async (req, res) => {
+  msgController.getMessages(req, res);
+});
+
 module.exports = { router };

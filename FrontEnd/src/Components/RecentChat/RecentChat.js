@@ -1,5 +1,6 @@
 import React from "react";
 import "./RecentChat.css";
+import { useStoreActions } from "easy-peasy";
 
 export default function RecentChat({
   senderName,
@@ -8,9 +9,17 @@ export default function RecentChat({
   Time,
   senderImage,
   active,
+  id,
 }) {
+  const setCurrentChat = useStoreActions((actions) => actions.setCurrentChat);
   return (
-    <div className={`recent-chat-container ` + (active ? "active" : "")}>
+    <div
+      className={`recent-chat-container ` + (active ? "active" : "")}
+      onClick={() => {
+        console.log("hello");
+        setCurrentChat(id);
+      }}
+    >
       <img src={senderImage} className='chat-dp' alt='dp' />
       <div className='recent-chat-details'>
         <p className='recent-chat-sender'>{senderName}</p>

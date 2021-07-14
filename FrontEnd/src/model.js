@@ -12,6 +12,9 @@ export default {
   isLogged: false,
   userInfo: {},
   chats: [],
+  currentChat: "",
+  currentChatDetails: {},
+  messages: [],
 
   //SignUp
   signUp: thunk((actions, newUser) => {
@@ -121,6 +124,44 @@ export default {
     });
   }),
 
+  getChatDetails: thunk(async (actions, convoID) => {
+    var config = {
+      method: "get",
+      url: `http://localhost:5000/conversation/getdetails/${convoID}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    axios(config).then(async (response) => {
+      let responseData = await response.data;
+      if (responseData.success) {
+        console.log(responseData);
+        actions.setChatDetails(responseData.convoDetails);
+      } else {
+        console.error(responseData);
+      }
+    });
+  }),
+
+  getMessages: thunk(async (actions, convoID) => {
+    var config = {
+      method: "get",
+      url: `http://localhost:5000/message/get/${convoID}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    axios(config).then(async (response) => {
+      let responseData = await response.data;
+      if (responseData.success) {
+        console.log(responseData);
+        actions.setMessages(responseData.messages);
+      } else {
+        console.error(responseData);
+      }
+    });
+  }),
+
   //Actions
   toggleTheme: action((state) => {
     state.darkTheme = !state.darkTheme;
@@ -138,6 +179,17 @@ export default {
 
   setChats: action((state, chats) => {
     state.chats = chats;
+  }),
+
+  setCurrentChat: action((state, chat) => {
+    state.currentChat = chat;
+  }),
+
+  setChatDetails: action((state, currentChat) => {
+    state.currentChatDetails = currentChat;
+  }),
+  setMessages: action((state, messages) => {
+    state.messages = messages;
   }),
 
   signOut: action((state) => {

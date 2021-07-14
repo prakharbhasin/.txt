@@ -23,6 +23,12 @@
   color: var(--sub-acc-1);
 }
 
+.active-chat-users {
+  display: inline-block;
+  color: var(--sub-acc-2);
+  font-size: 0.85rem;
+}
+
 #contact-info-button {
   margin-left: auto;
   color: var(--sub-acc-1);

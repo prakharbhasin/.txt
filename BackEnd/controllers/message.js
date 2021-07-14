@@ -20,6 +20,21 @@ const newMessage = async (req, res) => {
     });
 };
 
+const getMessages = async (req, res) => {
+  const convoID = req.params.convoID;
+  console.log(convoID);
+  await Messages.find({
+    conversation: convoID,
+  })
+    .then((messages) => {
+      res.send({ success: true, messages });
+    })
+    .catch((err) => {
+      res.send({ sucess: false, message: "Error Loading Messages!" });
+    });
+};
+
 module.exports = {
   newMessage,
+  getMessages,
 };
