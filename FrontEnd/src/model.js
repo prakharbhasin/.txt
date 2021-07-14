@@ -162,6 +162,31 @@ export default {
     });
   }),
 
+  sendMessages: thunk(async (actions, newMessage) => {
+    var config = {
+      method: "post",
+      url: "http://localhost:5000/message/new",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: newMessage,
+    };
+
+    axios(config)
+      .then(async (response) => {
+        let responseData = await response.data;
+        if (responseData.success) {
+          console.log(responseData);
+        } else {
+          console.log(responseData.message);
+          toast.error(responseData.message);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }),
+
   //Actions
   toggleTheme: action((state) => {
     state.darkTheme = !state.darkTheme;
