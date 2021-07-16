@@ -2,6 +2,7 @@ import { action, thunk } from "easy-peasy";
 import cookies from "react-cookies";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { io } from "socket.io-client";
 
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 
@@ -15,6 +16,11 @@ export default {
   currentChat: "",
   currentChatDetails: {},
   messages: [],
+  socket: io("http://localhost:5000", {
+    secure: true,
+    reconnection: true,
+    rejectUnauthorized: false,
+  }),
 
   //SignUp
   signUp: thunk((actions, newUser) => {
@@ -34,7 +40,7 @@ export default {
           actions.setToken(responseData.auth_token);
           actions.setUser(responseData.userInfo);
           localStorage.setItem("authToken", responseData.auth_token);
-          console.log(responseData);
+          // console.log(responseData);
         } else {
           console.log(responseData.message);
           toast.error(responseData.message);
@@ -63,7 +69,7 @@ export default {
           actions.setToken(responseData.auth_token);
           actions.setUser(responseData.userInfo);
           localStorage.setItem("authToken", responseData.auth_token);
-          console.log(responseData);
+          // console.log(responseData);
         } else {
           console.log(responseData.message);
           toast.error(responseData.message);
@@ -76,7 +82,7 @@ export default {
 
   verifyUser: thunk(async (actions) => {
     let authToken = await cookies.load("ChatAppToken");
-    console.log(`token: ${authToken}`);
+    // console.log(`token: ${authToken}`);
     if (authToken === undefined) {
       actions.signOut();
     } else {
@@ -105,7 +111,7 @@ export default {
   }),
 
   getChats: thunk(async (actions, userID) => {
-    console.log(userID);
+    // console.log(userID);
     var config = {
       method: "get",
       url: `http://localhost:5000/conversation/getall/${userID}`,
@@ -116,7 +122,7 @@ export default {
     axios(config).then(async (response) => {
       let responseData = await response.data;
       if (responseData.success) {
-        console.log(responseData);
+        // console.log(responseData);
         actions.setChats(responseData.conversations);
       } else {
         console.error(responseData);
@@ -135,7 +141,7 @@ export default {
     axios(config).then(async (response) => {
       let responseData = await response.data;
       if (responseData.success) {
-        console.log(responseData);
+        // console.log(responseData);
         actions.setChatDetails(responseData.convoDetails);
       } else {
         console.error(responseData);
@@ -154,10 +160,10 @@ export default {
     axios(config).then(async (response) => {
       let responseData = await response.data;
       if (responseData.success) {
-        console.log(responseData);
+        // console.log(responseData);
         actions.setMessages(responseData.messages);
       } else {
-        console.error(responseData);
+        // console.error(responseData);
       }
     });
   }),
@@ -176,10 +182,10 @@ export default {
       .then(async (response) => {
         let responseData = await response.data;
         if (responseData.success) {
-          console.log(responseData);
+          // console.log(responseData);
         } else {
-          console.log(responseData.message);
-          toast.error(responseData.message);
+          // console.log(responseData.message);
+          // toast.error(responseData.message);
         }
       })
       .catch((err) => {
@@ -213,7 +219,9 @@ export default {
   setChatDetails: action((state, currentChat) => {
     state.currentChatDetails = currentChat;
   }),
+
   setMessages: action((state, messages) => {
+    console.trace("MESSAGES CHANGED BITCH!");
     state.messages = messages;
   }),
 

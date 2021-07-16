@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import RecentChat from "../RecentChat/RecentChat";
 import "./ChatList.css";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreState } from "easy-peasy";
 
 export default function ChatPanel() {
   const chats = useStoreState((state) => state.chats);
@@ -23,8 +23,9 @@ export default function ChatPanel() {
                 lastMessage='LOL'
                 Time='20:13'
                 senderImage={c.displayPicture}
-                active={c._id == currentChat ? true : false}
+                active={c._id === currentChat ? true : false}
                 id={c._id}
+                key={c._id}
               />
             );
           })

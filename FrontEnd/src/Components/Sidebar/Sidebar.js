@@ -2,7 +2,7 @@ import React from "react";
 import ToggleButton from "../toggleButton";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuoteLeft, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 import "./Sidebar.css";
 
@@ -13,7 +13,11 @@ export default function Sidebar() {
     <div className='sidebar'>
       <div className='sidebar-section'>
         {/* <FontAwesomeIcon icon={faQuoteLeft} id='sidebar-icons' /> */}
-        <img src={userImage} className='sidebar-profile-image' />
+        <img
+          src={userImage}
+          className='sidebar-profile-image'
+          alt='user-profile'
+        />
       </div>
       <div className='sidebar-section'>
         <ToggleButton />

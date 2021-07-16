@@ -8,12 +8,14 @@ const morgan = require("morgan");
 
 const connectDB = require("./config/db");
 const pageRouter = require("./routes/index");
+const socket = require("./socket");
 
 dotenv.config({ path: "./config/config.env" });
 connectDB();
 require("./config/passport-local")(passport);
 
 const server = express();
+const httpServer = require("http").createServer(server);
 
 server.use(express.json());
 
@@ -38,8 +40,15 @@ server.use(passport.initialize());
 server.use(passport.session());
 server.use(morgan("dev"));
 
+socket.socket(httpServer);
+
 const PORT = process.env.PORT || 5000;
 
-server.listen(PORT, console.log(`The server is running on port ${PORT}`));
+httpServer.listen(PORT);
+httpServer.on("listening", () => {
+  global.console.log(`Now tuning into port: ${PORT}`);
+});
+
+// server.listen(PORT, console.log(`The server is running on port ${PORT}`));
 
 server.use("/", pageRouter.router);

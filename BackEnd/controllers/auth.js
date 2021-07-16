@@ -70,13 +70,13 @@ const signIn = (req, res, next) => {
 const verifyUser = (req, res, next) => {
   const token = req.headers.authorization;
   const auth_token = token.replace(/^Bearer\s/, "");
-  console.log(auth_token);
+  // console.log(auth_token);
 
   if (!auth_token)
     res.send({ success: false, message: "Authentication Invalid" });
   try {
     const decodedToken = jwt.verify(auth_token, process.env.JWT_SECRET);
-    console.log(decodedToken);
+    // console.log(decodedToken);
     res.send({ success: true, user: decodedToken });
   } catch (error) {
     res.send({ success: false, message: "Login expired. Please Login Again" });

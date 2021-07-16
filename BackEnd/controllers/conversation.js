@@ -5,7 +5,7 @@ const authUtil = require("../utils/auth");
 
 const getAllConversations = async (req, res) => {
   const userID = req.params.userID;
-  console.log(userID);
+  // console.log(userID);
 
   await Conversations.find({
     members: { $in: [userID] },
@@ -26,7 +26,7 @@ const getAllConversations = async (req, res) => {
           },
           { sort: { createdAt: -1 }, limit: 1 }
         ).then((newmsg) => {
-          console.log(newmsg[0]);
+          // console.log(newmsg[0]);
           msgs.push(newmsg[0]);
         });
       });

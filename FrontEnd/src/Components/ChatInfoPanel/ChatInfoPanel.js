@@ -14,7 +14,7 @@ export default function ChatInfoPanel({ show, toggle }) {
       <img
         className='contact-info-img'
         src={currChatDetails.displayPicture}
-        alt=''
+        alt='contact-img'
       />
       <h1 className='contact-info-name'>{currChatDetails.name}</h1>
       {currChatDetails.users !== undefined &&
@@ -22,7 +22,11 @@ export default function ChatInfoPanel({ show, toggle }) {
         currChatDetails.users.map((u) => {
           return (
             <div className='chat-users-info-container'>
-              <img className='chat-user-info-image' src={u.displayPicture} />
+              <img
+                className='chat-user-info-image'
+                alt='chat-user-info'
+                src={u.displayPicture}
+              />
               <p className='contact-info-mail multiple '>
                 {/* <span>Email: </span> */}
                 {u.name}
