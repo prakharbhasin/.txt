@@ -16,6 +16,27 @@ body {
   height: 100%;
 }
 
+.chat-body.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.no-chats-image {
+  width: 60%;
+  margin: 2.5%;
+}
+
+.no-chats-heading {
+  color: var(--accent);
+  margin: 1%;
+}
+
+.no-chats-sub {
+  color: var(--sub-acc-1);
+}
+
 @media (max-width: 800px) {
   .chat-body {
     width: 100%;

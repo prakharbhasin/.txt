@@ -222,5 +222,10 @@ export default {
     state.isLogged = false;
     state.authToken = null;
     state.userInfo = {};
+    state.chats = [];
+    state.currentChat = "";
+    state.currentChatDetails = {};
+    state.messages = [];
+    toast.warning("Successfully Logged Out");
   }),
 };
