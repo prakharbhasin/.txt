@@ -16,15 +16,16 @@ export default function ChatHeader({ toggle }) {
             src={currChatDetails.displayPicture}
             alt='active'
           />
-          <div style={{ padding: "0 2%", width: "20%" }}>
+          <div style={{ padding: "0 2%", width: "70%" }}>
             <p className='active-chat-contact'>{currChatDetails.name}</p>
             {currChatDetails.users !== undefined &&
             currChatDetails.users.length > 2
-              ? currChatDetails.users.map((u) => {
+              ? currChatDetails.users.map((u, index) => {
                   return (
                     <p className='active-chat-users'>
-                      {" "}
-                      {`${u.name.split(" ").slice(0, -1)}`}
+                      {index === 0
+                        ? `${u.name.split(" ").slice(0, -1)}`
+                        : ", " + `${u.name.split(" ").slice(0, -1)}`}
                     </p>
                   );
                 })
