@@ -16,6 +16,7 @@ export default {
   currentChat: "",
   currentChatDetails: {},
   messages: [],
+  otherUsers: [],
   socket: io("http://localhost:5000", {
     secure: true,
     reconnection: true,
@@ -84,7 +85,7 @@ export default {
     let authToken = await cookies.load("ChatAppToken");
     // console.log(`token: ${authToken}`);
     if (authToken === undefined) {
-      actions.signOut();
+      actions.signOut("Please Login Again!");
     } else {
       var config = {
         method: "get",
@@ -111,7 +112,6 @@ export default {
   }),
 
   getChats: thunk(async (actions, userID) => {
-    // console.log(userID);
     var config = {
       method: "get",
       url: `http://localhost:5000/conversation/getall/${userID}`,
@@ -147,6 +147,17 @@ export default {
         console.error(responseData);
       }
     });
+  }),
+
+  createChat: thunk(async (actions, newConvo) => {
+    var config = {
+      method: "post",
+      url: "http://localhost:5000/conversation/create",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: newConvo,
+    };
   }),
 
   getMessages: thunk(async (actions, convoID) => {
@@ -193,6 +204,26 @@ export default {
       });
   }),
 
+  getOtherUsers: thunk(async (actions, userID) => {
+    var config = {
+      method: "get",
+      url: `http://localhost:5000/user/all/${userID}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    axios(config).then(async (response) => {
+      let responseData = await response.data;
+      if (responseData.success) {
+        console.log(responseData);
+        actions.setOtherUsers(responseData.users);
+      } else {
+        toast.error(responseData.message);
+        // console.error(responseData);
+      }
+    });
+  }),
+
   //Actions
   toggleTheme: action((state) => {
     state.darkTheme = !state.darkTheme;
@@ -221,11 +252,14 @@ export default {
   }),
 
   setMessages: action((state, messages) => {
-    console.trace("MESSAGES CHANGED BITCH!");
     state.messages = messages;
   }),
 
-  signOut: action((state) => {
+  setOtherUsers: action((state, otherUsers) => {
+    state.otherUsers = otherUsers;
+  }),
+
+  signOut: action((state, message) => {
     cookies.remove("ChatAppToken");
     state.isLogged = false;
     state.authToken = null;
@@ -234,6 +268,9 @@ export default {
     state.currentChat = "";
     state.currentChatDetails = {};
     state.messages = [];
-    toast.warning("Successfully Logged Out");
+
+    message.length > 0
+      ? toast.error(message)
+      : toast.warning("Successfully Logged Out");
   }),
 };

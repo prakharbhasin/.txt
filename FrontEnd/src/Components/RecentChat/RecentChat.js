@@ -16,18 +16,17 @@ export default function RecentChat({
     <div
       className={`recent-chat-container ` + (active ? "active" : "")}
       onClick={() => {
-        console.log("hello");
         setCurrentChat(id);
       }}
     >
       <img src={senderImage} className='chat-dp' alt='dp' />
       <div className='recent-chat-details'>
         <p className='recent-chat-sender'>{senderName}</p>
-        <p className='recent-chat-text'>
+        {/* <p className='recent-chat-text'>
           {lastSender}: {lastMessage}
-        </p>
+        </p> */}
       </div>
-      <p className='recent-chat-time'>{Time}</p>
+      {/* <p className='recent-chat-time'>{Time}</p> */}
     </div>
   );
 }

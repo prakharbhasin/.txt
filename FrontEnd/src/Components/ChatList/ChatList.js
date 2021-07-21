@@ -3,7 +3,7 @@ import RecentChat from "../RecentChat/RecentChat";
 import "./ChatList.css";
 import { useStoreState } from "easy-peasy";
 
-export default function ChatPanel() {
+export default function ChatPanel({ toggleModal }) {
   const chats = useStoreState((state) => state.chats);
   const currentChat = useStoreState((state) => state.currentChat);
 
@@ -13,7 +13,12 @@ export default function ChatPanel() {
   //
   return (
     <div className='chat-list'>
-      <h1 className='chat heading'>Chats</h1>
+      <div className='chat-list-header'>
+        <h1 className='chat heading'>Chats</h1>
+        <button onClick={toggleModal} className='create-chat-button'>
+          +
+        </button>
+      </div>
       {chats !== []
         ? chats.map((c) => {
             return (

@@ -15,6 +15,23 @@
   overflow: auto;
 }
 
+.chat-list-header {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.create-chat-button {
+  background-color: var(--accent);
+  padding: 1.5% 4.5%;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+
 @media (max-width: 800px) {
   .chat-list {
     z-index: 100;

@@ -69,11 +69,11 @@ code {
 *::-webkit-scrollbar {
   width: 0.5rem;
   cursor: pointer;
-  background-color: #4d38a2;
+  /* background-color: transparent; */
 }
 
 *::-webkit-scrollbar-track {
-  background-color: var(--dark-translucent);
+  /* background-color: var(--dark-translucent); */
 }
 
 *::-webkit-scrollbar-thumb {

@@ -1,0 +1,70 @@
+.add-personal-chats-container {
+  margin-top: 2.5%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  width: 100%;
+  /* padding: 0 1%; */
+  overflow: auto;
+}
+
+.add-chat-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10%;
+  width: 75%;
+  margin: 1% 0;
+  padding: 0.5% 0;
+  border-bottom: 1px solid var(--chat-border);
+}
+
+/* .add-chat-contact:last-child{
+      border: 0;
+  } */
+
+.add-contact-img {
+  height: 95%;
+  border-radius: 50%;
+}
+.add-contact-details {
+  margin: 0 auto 0 2.5%;
+}
+
+.add-chat-contact h4 {
+  color: var(--sub-acc-1);
+}
+
+.add-chat-contact p {
+  color: var(--sub-acc-2);
+  font-size: 0.7rem;
+}
+
+.add-chat-button {
+  color: white;
+  background-color: var(--accent);
+  border: 0;
+  border-radius: 5px;
+  padding: 0.85% 1.75%;
+  font-size: 1.25rem;
+}
+
+.user-search-field {
+  background: var(--primary-active);
+  border: 0;
+  height: 8vh;
+  width: 40%;
+  border-radius: 5px;
+  padding-left: 10px;
+  color: var(--sub-acc-1);
+  margin: 1% 0;
+  /* position: sticky; */
+}
+.user-search-field:focus {
+  outline: var(--accent) solid 3px;
+  transition: 0.2s ease-in;
+}
+.user-search-field::placeholder {
+  color: var(--sub-acc-1);
+}

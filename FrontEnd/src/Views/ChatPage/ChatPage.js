@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Redirect } from "react-router";
+import CreateChat from "../../Components/CreateChat/CreateChat";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import ChatList from "../../Components/ChatList/ChatList";
 import ChatInfoPanel from "../../Components/ChatInfoPanel/ChatInfoPanel";
@@ -14,7 +15,9 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 
 export default function ChatPage() {
   const [showInfo, setShowInfo] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const scrollRef = useRef();
+  const contRef = useRef(null);
   const darkTheme = useStoreState((state) => state.darkTheme);
   const currentChat = useStoreState((state) => state.currentChat);
   const userName = useStoreState((state) => state.userInfo).name;
@@ -30,33 +33,25 @@ export default function ChatPage() {
     setShowInfo(!showInfo);
   };
 
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   useEffect(() => {
     if (currentChat !== "") {
       getChats(currentChat);
       getChatDetails(currentChat);
       socketIO.emit("join-room", { userName, currentChat });
-      // socketIO.on("receive-msg", (messageDetails) => {
-      //   console.log("received new message");
-      //   console.log(messageDetails);
-      // console.log(messages[0]);
-      // setChats([...messages, messageDetails]);
-      // });
     }
-
     // eslint-disable-next-line
   }, [currentChat]);
 
   useEffect(() => {
     if (currentChat !== "") {
       socketIO.on("receive-msg", (messageDetails) => {
-        console.log("received new message");
-        console.log(messageDetails);
         setNewMessage(messageDetails);
-        console.log([...messages, newMessage]);
-        // console.log(messages[0]);
       });
     }
-
     // eslint-disable-next-line
   }, [currentChat]);
 
@@ -71,23 +66,14 @@ export default function ChatPage() {
   }, [messages]);
 
   useEffect(() => {
-    // console.log(messages);
     // eslint-disable-next-line
   }, [isLogged]);
 
-  // useEffect(() => {
-  //   socketIO.on("receive-msg", (messageDetails) => {
-  //     console.log("received new message");
-  //     console.log(messageDetails);
-  //   });
-
-  //   // eslint-disable-next-line
-  // }, []);
-
   return isLogged ? (
     <div className='chat-container'>
+      {showModal ? <CreateChat toggle={toggleModal} /> : null}
       <Sidebar />
-      <ChatList />
+      <ChatList toggleModal={toggleModal} />
       {currentChat !== "" ? (
         <div className='chat-body'>
           <ChatHeader toggle={toggleInfo} />
